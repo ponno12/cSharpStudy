@@ -37,6 +37,7 @@ namespace Algorithm
 			// Mazes for Programmers
 			//GenerateByBinaryTree();
 			GenerateBySideWinder();
+			
 		}
 
 		void GenerateBySideWinder()
