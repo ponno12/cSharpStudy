@@ -50,7 +50,31 @@ namespace TextRPG
                 }
             }
         }
+        private static PlayerType ChooseClass()
+        {
+            PlayerType choice = PlayerType.None;
+            Console.WriteLine("직업을 선택하세요!!");
+            Console.WriteLine("[1] 기사");
+            Console.WriteLine("[2] 궁수");
+            Console.WriteLine("[3] 법사");
 
+            string input = Console.ReadLine();
+            switch (input)
+            {
+                case "1":
+                    choice = PlayerType.Knight;
+                    break;
+
+                case "2":
+                    choice = PlayerType.Archer;
+                    break;
+
+                case "3":
+                    choice = PlayerType.Mage;
+                    break;
+            }
+            return choice;
+        }
         private static void EnterGame(ref Player player)
         {   
             while (true)
@@ -196,30 +220,6 @@ namespace TextRPG
             Console.WriteLine($"HP{player.hp} Attack{player.attack}");
         }
 
-        private static PlayerType ChooseClass()
-        {
-            PlayerType choice = PlayerType.None;
-            Console.WriteLine("직업을 선택하세요!!");
-            Console.WriteLine("[1] 기사");
-            Console.WriteLine("[2] 궁수");
-            Console.WriteLine("[3] 법사");
-
-            string input = Console.ReadLine();
-            switch (input)
-            {
-                case "1":
-                    choice = PlayerType.Knight;
-                    break;
-
-                case "2":
-                    choice = PlayerType.Archer;
-                    break;
-
-                case "3":
-                    choice = PlayerType.Mage;
-                    break;
-            }
-            return choice;
-        }
+        
     }
 }
