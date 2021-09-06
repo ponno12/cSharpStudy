@@ -18,11 +18,10 @@ namespace myTextRPG
     {
         protected PlayerType _type = PlayerType.None;
        
-
-
         protected Player(PlayerType type) : base(CreatureType.Player) {
             _type = type;
         }
+        public PlayerType GetPlayterType() { return _type; }
         
     }
     class Knight : Player
@@ -32,9 +31,9 @@ namespace myTextRPG
             SetInfo(100, 10);
         }
     }
-    class Arhcer : Player
+    class Archer : Player
     {
-        public Arhcer() : base(PlayerType.Archer)
+        public Archer() : base(PlayerType.Archer)
         {
             SetInfo(75, 12);
         }
