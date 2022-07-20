@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32505.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercise", "Exercise.csproj", "{58C026F3-9D71-4F17-8B9B-CA62DC89443E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Practice", "..\Practice\Practice.csproj", "{D861E59E-0163-4A02-B077-6A5DAE876700}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithm", "..\Algorithm\Algorithm.csproj", "{660EF557-3042-4466-BE0A-7CA2BDAD8677}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58C026F3-9D71-4F17-8B9B-CA62DC89443E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58C026F3-9D71-4F17-8B9B-CA62DC89443E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58C026F3-9D71-4F17-8B9B-CA62DC89443E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58C026F3-9D71-4F17-8B9B-CA62DC89443E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D861E59E-0163-4A02-B077-6A5DAE876700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D861E59E-0163-4A02-B077-6A5DAE876700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D861E59E-0163-4A02-B077-6A5DAE876700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D861E59E-0163-4A02-B077-6A5DAE876700}.Release|Any CPU.Build.0 = Release|Any CPU
+		{660EF557-3042-4466-BE0A-7CA2BDAD8677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{660EF557-3042-4466-BE0A-7CA2BDAD8677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{660EF557-3042-4466-BE0A-7CA2BDAD8677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{660EF557-3042-4466-BE0A-7CA2BDAD8677}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94C2855D-B37E-4010-B9CC-EBF6652F641C}
+	EndGlobalSection
+EndGlobal

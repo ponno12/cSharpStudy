@@ -9,7 +9,7 @@ namespace DeleGatePrac
     class InputManager
     {
         public delegate void OnInputKey();
-        public event OnInputKey InputKey;  // public 접근 한정자까지 똑같이 맞춰주어야 함
+        public event OnInputKey InputKey;  
 
         public void Update()
         {
@@ -18,9 +18,9 @@ namespace DeleGatePrac
                 return;
 
             ConsoleKeyInfo info = Console.ReadKey();
-            if (info.Key == ConsoleKey.A)  // A 키가 눌리면 이벤트 호출
+            if (info.Key == ConsoleKey.A)  
             {
-                InputKey();  // 구독자들에게 메세지 뿌리기 👉 옵저버 패턴
+                InputKey(); 
             }
         }
     }
