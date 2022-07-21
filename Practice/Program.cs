@@ -9,7 +9,7 @@ namespace Practice
 {
     public class ProgramTest
     {
-        public static async Task Main()
+        public static void Main()
         {
 
             //메소드 상속
@@ -22,8 +22,11 @@ namespace Practice
             //ParamsExample.Param();
 
             //Async메소드
-            
-            await AsyncMethodExample.AsyncMethod();
+            //메인 반환형에 async task 작성해야함
+            //await AsyncMethodExample.AsyncMethod();
+
+            //Iterator
+            Iterators.IteratorsExample.Iteraotr();
         }
 
         
