@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Numerics;
-namespace Algorithm
+namespace Algorithm.etc
 {
-    class boj1274{
+    class boj1274
+    {
         public static void Bigintenger1274()
         {
             string input = Console.ReadLine();
@@ -15,9 +16,9 @@ namespace Algorithm
             Console.WriteLine(bigInteger);
             Console.WriteLine(bigInteger2);
         }
-        
-    
+
+
     }
 
-        
+
 }
