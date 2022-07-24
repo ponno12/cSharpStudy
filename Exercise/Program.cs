@@ -1,119 +1,41 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-// Simple business object.
-public class Person
+namespace Exercise
 {
-    public Person(string fName, string lName)
+    public class Solution
     {
-        this.firstName = fName;
-        this.lastName = lName;
-    }
-
-    public string firstName;
-    public string lastName;
-}
-
-// Collection of Person objects. This class
-// implements IEnumerable so that it can be used
-// with ForEach syntax.
-// IEnumerable 사용법 예시
-
-public class People : IEnumerable
-{
-    private Person[] _people;
-    public People(Person[] pArray)
-    {
-        _people = new Person[pArray.Length];
-
-        for (int i = 0; i < pArray.Length; i++)
+        public static void Main(string[] args)
         {
-            _people[i] = pArray[i];
+            string s = "abcdef";
+            string r = Middle(s).Replace(" " , "");
+
+            Console.WriteLine(r);
         }
-    }
-
-    // Implementation for the GetEnumerator method.
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return (IEnumerator)GetEnumerator();
-    }
-
-    public PeopleEnum GetEnumerator()
-    {
-        return new PeopleEnum(_people);
-    }
-}
-
-// When you implement IEnumerable, you must also implement IEnumerator.
-public class PeopleEnum : IEnumerator
-{
-    public Person[] _people;
-
-    // Enumerators are positioned before the first element
-    // until the first MoveNext() call.
-    int position = -1;
-
-    public PeopleEnum(Person[] list)
-    {
-        _people = list;
-    }
-
-    public bool MoveNext()
-    {
-        position++;
-        return (position < _people.Length);
-    }
-
-    public void Reset()
-    {
-        position = -1;
-    }
-
-    object IEnumerator.Current
-    {
-        get
+        public static string Middle(string s)
         {
-            return Current;
-        }
-    }
-
-    public Person Current
-    {
-        get
-        {
-            try
+            char[] result = new char[s.Length];
+            string r = "";
+            if(s.Length%2 == 0)
             {
-                return _people[position];
+                result[0] = s[s.Length/ 2 -1];
+                result[1] = s[s.Length /2 ];
+
             }
-            catch (IndexOutOfRangeException)
+            else if(s.Length%2 == 1)
             {
-                throw new InvalidOperationException();
+                result[0] = s[s.Length / 2];
             }
+            for (int i = 0; i < result.Length; i++)
+            {
+                r += result[i];
+
+            }
+            
+            return r;
         }
     }
 }
-
-class App
-{
-    static void Main()
-    {
-        Person[] peopleArray = new Person[3]
-        {
-            new Person("John", "Smith"),
-            new Person("Jim", "Johnson"),
-            new Person("Sue", "Rabon"),
-        };
-
-        People peopleList = new People(peopleArray);
-        foreach (Person p in peopleList)
-            Console.WriteLine(p.firstName + " " + p.lastName);
-    }
-}
-
-/* 결과 값 : 
- *
- * John Smith
- * Jim Johnson
- * Sue Rabon
- *
- */
