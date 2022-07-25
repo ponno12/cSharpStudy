@@ -1,11 +1,10 @@
-﻿using System;
+﻿
 
 
-
-using DateMeasurements =
-    System.Collections.Generic.Dictionary<System.DateTime, Practice.Indexers.Measurements>;
 using CityDataMeasurements =
     System.Collections.Generic.Dictionary<string, System.Collections.Generic.Dictionary<System.DateTime, Practice.Indexers.Measurements>>;
+using DateMeasurements =
+    System.Collections.Generic.Dictionary<System.DateTime, Practice.Indexers.Measurements>;
 
 namespace Practice.Indexers
 {

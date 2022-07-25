@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Practice.Property
+﻿namespace Practice.Property
 {
     //속성을 참고하는 다른 속성이 존재할때, 참고되는 속성이 변경되면 참고하는 속성이 유효한지 확인후 반환
     public class PersonValueChange

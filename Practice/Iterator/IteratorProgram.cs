@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Practice.Iterators
+﻿namespace Practice.Iterators
 {
     public class IteratorsExample
     {

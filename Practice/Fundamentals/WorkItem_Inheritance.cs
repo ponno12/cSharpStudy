@@ -91,7 +91,7 @@ public class ChangeRequest : WorkItem_Inheritance
     {
         // Create an instance of WorkItem by using the constructor in the
         // base class that takes three arguments.
-        WorkItem_Inheritance item = new ("Fix Bugs",
+        WorkItem_Inheritance item = new("Fix Bugs",
                                     "Fix all bugs in my code branch",
                                     new TimeSpan(3, 4, 0, 0));
 
@@ -112,12 +112,12 @@ public class ChangeRequest : WorkItem_Inheritance
 
         // ChangeRequest inherits WorkItem's override of ToString.
         Console.WriteLine(change.ToString());
-        
-            /* Output:
-            1 - Fix Bugs
-            2 - Change the Design of the Base Class
-            */
-            
+
+        /* Output:
+        1 - Fix Bugs
+        2 - Change the Design of the Base Class
+        */
+
     }
 }
 

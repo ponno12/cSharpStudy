@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Practice
+﻿namespace Practice
 {
     public static class Extensions
     {
@@ -46,6 +40,10 @@ namespace Practice
             }
 
             return sequence;
+        }
+        public static IEnumerable<TSource> Where<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
+        {
+            return source.Where(predicate);
         }
 
     }

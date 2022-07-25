@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Practice.Property
+﻿namespace Practice.Property
 {
     public class PersonBase
     {
@@ -12,7 +6,7 @@ namespace Practice.Property
         public PersonBase(string firstName) => this.FirstName = firstName;
 
         public string LastName { get; set; }
-        
+
         public string FirstName { get; private set; }
 
         //똑같이 FullName을 설정하는거지만 단일 속성일 경우에는 밑처럼 람다로 바로 처리가능

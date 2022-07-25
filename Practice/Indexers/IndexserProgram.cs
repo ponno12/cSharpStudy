@@ -1,6 +1,4 @@
 ﻿using IndexersSamples.SampleOne;
-using System;
-using System.Linq;
 
 
 namespace Practice.Indexers

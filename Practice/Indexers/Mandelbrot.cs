@@ -1,5 +1,5 @@
 ﻿namespace Practice.Indexers
-{ 
+{
     public class Mandelbrot
     {
         readonly private int maxIterations;

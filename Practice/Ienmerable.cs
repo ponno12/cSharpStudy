@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 
 // Simple business object.
 public class Person
@@ -93,9 +92,9 @@ public class PeopleEnum : IEnumerator
     }
 }
 
-class App
+class IEnmumerableExample
 {
-    static void Main()
+    static void IEnumerableBasic()
     {
         Person[] peopleArray = new Person[3]
         {

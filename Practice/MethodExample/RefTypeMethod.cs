@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Practice.MethodExample
+﻿namespace Practice.MethodExample
 {
     public class SampleRefType
     {

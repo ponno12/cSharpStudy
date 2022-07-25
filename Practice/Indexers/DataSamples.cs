@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using Practice.Indexers;
+﻿using Practice.Indexers;
 
 namespace IndexersSamples.SampleOne
 {

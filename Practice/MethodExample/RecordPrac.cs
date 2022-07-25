@@ -13,8 +13,8 @@ public record PersonRecord
         => (this.Name, this.Age) = (name, age);
     public void Deconstruct(out string name, out int age)
         => (name, age) = (Name, Age);
-    ~PersonRecord() =>  Console.WriteLine($"소멸자 호출 {Name} & {Age}");
-    
+    ~PersonRecord() => Console.WriteLine($"소멸자 호출 {Name} & {Age}");
+
 }
 
 //예제(6) Positional record

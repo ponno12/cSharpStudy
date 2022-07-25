@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Practice.Indexers
-{ 
+﻿namespace Practice.Indexers
+{
     public class ArgsProcessor
     {
         private readonly ArgsActions actions;

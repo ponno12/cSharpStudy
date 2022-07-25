@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-
-namespace Practice.Indexers
+﻿namespace Practice.Indexers
 {
     //   C# Indexer는 클래스 객체의 데이타를 배열 형태로 인덱스를 써서 엑세스할 수 있게 해준다.
     //   즉, 클래스 객체는 배열이 아님에도 불구하고, 마치 배열처럼 []를 사용하여 클래스 내의 특정 필드 데이타를 엑세스하는 것이다.

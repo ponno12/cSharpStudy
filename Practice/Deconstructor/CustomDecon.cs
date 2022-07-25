@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CusteomDecon
+﻿namespace CusteomDecon
 {
-    
+
     public class Person
     {
         public string FirstName { get; set; }
@@ -66,5 +60,5 @@ namespace CusteomDecon
     }
     // The example displays the following output:
     //    Hello John Adams of Boston, MA!
-    
+
 }
