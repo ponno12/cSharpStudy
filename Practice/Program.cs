@@ -25,9 +25,32 @@ namespace Practice
             // Delegate
             // DelegateSortExample sample = new ();
             // sample.DelegateSort();
-            DelegateLINQExample.DelegateLINQ();
+            //DelegateLINQExample.DelegateLINQ();
+
+            // LINQ
+            //LINQ.LINQEample.LINQ();
+            //LINQ.GroupSample1.GroupByBool();
+
+            // Expression Tree
+            //ExpressionTrees.ExpressionTreeExample.ExpressionTreeBasic();
 
 
+
+
+            // Lanaguage 에제
+            //Language_reference.OperatorOverLoadingExample.OpearatorOverLoading();
+
+            //Extension 예제
+            string s = "The quick brown fox jumped over the lazy dog.";
+            int i = s.WordCount();
+            Console.WriteLine("Word count of s is {0}", i);
+            Extensions.Grades g1 = Extensions.Grades.D;
+            Extensions.Grades g2 = Extensions.Grades.F;
+
+            Extensions.minPassing = Extensions.Grades.C;
+            Console.WriteLine("\r\nRaising the bar!\r\n");
+            Console.WriteLine("First {0} a passing grade.", g1.Passing() ? "is" : "is not");
+            Console.WriteLine("Second {0} a passing grade.", g2.Passing() ? "is" : "is not");
         }
     }
 

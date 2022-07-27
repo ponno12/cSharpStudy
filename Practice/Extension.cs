@@ -41,10 +41,27 @@
 
             return sequence;
         }
-        public static IEnumerable<TSource> Where<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
+        
+           
+        public static int WordCount(this string str)
+        {
+            return str.Split(new char[] { ' ', '.', '?' }, StringSplitOptions.RemoveEmptyEntries).Length;
+        }
+       
+        //
+        public enum Grades { F = 0, D = 1, C = 2, B = 3, A = 4 };
+
+        public static Grades minPassing = Grades.D;
+        public static bool Passing(this Grades grade)
+        {
+            return grade >= minPassing;
+        }
+        
+
+        /*public static IEnumerable<TSource> Where<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
         {
             return source.Where(predicate);
-        }
+        }*/
 
     }
 }
