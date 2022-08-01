@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Exercise
 {
+    #region MyAnswer
+    /*
     public class Solution
     {
         public static void Main(string[] args)
@@ -80,13 +82,12 @@ namespace Exercise
                 if(a[i] == b[i % b.Length]) { right++; }
             }
             return right;
-        }
-        
-        using System;
+        }*/
+    #endregion
+    using System;
 using System.Collections.Generic;
 using System.Linq;
-
-public class Solution
+    public class supoza
     {
         public int[] solution(int[] answers)
         {
@@ -107,5 +108,6 @@ public class Solution
             return lstAnswer.ToArray();
         }
     }
+
 }
-}
+
