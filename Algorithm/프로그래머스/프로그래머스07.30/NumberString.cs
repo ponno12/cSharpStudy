@@ -12,7 +12,6 @@ namespace Algorithm.프로그래머스_07._30
         {
             s = "one4seveneight";
 
-
             int answer = ConvertToInt(s);
             return answer;
         }

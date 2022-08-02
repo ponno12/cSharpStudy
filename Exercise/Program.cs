@@ -10,67 +10,187 @@ namespace Exercise
     {
         public static void Main()
         {
-            Grid_3();
+            //Implement_4();
+
+            int n = 5;
+            int[] lost = new int[] { 2, 4 };
+            int[] reserve = new int[] { 1, 3, 5 };
+            solution(n, lost, reserve);
 
         }
-        public static void Grid_1()
-        {
-            int n = 1260;
-            int cnt = 0;
-            int[] coinTypes = new int[] { 500, 100, 50, 10 };
 
-            foreach (var item in coinTypes)
-            {
-                int coin = item;
-                cnt += n / coin;
-                n = n % coin;
-            }
-            Console.WriteLine(cnt);
+        public enum Movement
+        {
+            L = 0,
+            R = 1,
+            U = 2,
+            D = 3
         }
-        public static void Grid_2()
+        public static void Implement_1()
         {
-            int n = Convert.ToInt32(Console.ReadLine());
-            int m = Convert.ToInt32(Console.ReadLine());
-            int k = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine($"{n}, {m} ,{k}");
-            int result = 0;
+            int a = Convert.ToInt32(Console.ReadLine());
 
-            List<int> v = new List<int>();
-            for (int i = 0; i < n; i++)
-            {
-                v.Add(Convert.ToInt32(Console.ReadLine()));
-                Console.WriteLine(v[i]);
-            }
-            v.Sort();
-            for (int i = 0; i < m; i++)
-            {
-                if (i == 0)
-                    result += v[n - 1];
-                else if (i % k == 0)
-                    result += v[n-2];
-                else
-                    result += v[n-1];
-            }
-            Console.WriteLine(result);
+            int[,] map = new int[a, a];
+            int x, y;
+            x = y = 1;
+            int[] dx = new int[] { 0, 0, -1, 1 };
+            int[] dy = new int[] { -1, 1, 0, 0 };
 
-        }
-        public static void Grid_3()
-        {
-            int[,] a = new int[3, 3] { { 3, 1, 2 }, { 4, 1, 4 }, { 2, 2, 2 } };
-            List<int> b = new List<int>();
-
-            for (int i = 0; i < 3; i++)
+            char[] plane = new char[] { 'R', 'R', 'R', 'U', 'D', 'D' };
+            foreach (char item in plane)
             {
-                int temp = 100;
-                for (int j = 0; j < a.Rank; j++)
+                int nx, ny;
+                nx = ny = 0;
+                Console.WriteLine($"{x} and {y}");
+                switch (item)
                 {
-                    if (temp > a[i, j])
-                        temp = a[i, j];
+                    case 'L':
+                        nx = x + dx[(int)Movement.L];
+                        ny = y + dy[(int)Movement.L];
+                        break;
+                    case 'R':
+                        nx = x + dx[(int)Movement.R];
+                        ny = y + dy[(int)Movement.R];
+                        break;
+                    case 'U':
+                        nx = x + dx[(int)Movement.U];
+                        ny = y + dy[(int)Movement.U];
+                        break;
+                    case 'D':
+                        nx = x + dx[(int)Movement.D];
+                        ny = y + dy[(int)Movement.D];
+                        break;
+                    default:
+                        break;
                 }
-                b.Add(temp);
+                if (nx < 1 || ny < 1 || nx > a || ny > a)
+                    continue;
+                x = nx;
+                y = ny;
             }
-            Console.WriteLine(b.Max());
+            Console.WriteLine($"{x} and {y}");
 
+
+        }
+        public static void Implement_2()
+        {
+            int a = Convert.ToInt32(Console.ReadLine());
+
+            int minuteCount = 0;
+
+            for (int i = 0; i <= a; i++)
+            {
+                for (int j = 0; j < 60; j++)
+                {
+                    for (int k = 0; k < 60; k++)
+                    {
+                        string temp = i.ToString() + j.ToString() + k.ToString();
+                        if (temp.Contains('3'))
+                        {
+                            Console.WriteLine(temp);
+                            minuteCount++;
+                        }
+                    }
+                    
+                }
+            }
+            
+            Console.WriteLine(minuteCount);
+        }
+        public enum Alphabet
+        {
+            a,b,c,d,e,f,g,h
+        }
+        public static void Implement_3()
+        {
+         
+            int[,] a = new int[7, 7];
+            string a1 = Console.ReadLine();
+            char[] a2 = a1.ToCharArray();
+            //Enum을 사용하여 값 매칭
+            int y = (int)Enum.Parse(typeof(Alphabet), a1);
+            int x = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(y);
+
+            int count =0;
+
+
+            int[] dx = { -2, -2, -1, 1, 2, 2, -1, 1 };
+            int[] dy = { -1, 1, 2, 2, 1, -1, -2, -2 };
+            for (int i = 0; i < 8; i++)
+            {
+                int n_x = x + dx[i];
+                int n_y = y + dy[i];
+
+                if (n_x >= 0 && n_y >= 0 && n_x <= 7 && n_y <= 7)
+                    count++;
+            }
+            Console.WriteLine(count);
+
+
+        }
+
+        public static void Implement_4()
+        {
+            string a = Console.ReadLine();
+            char[] chars = a.ToCharArray();
+            
+            List<int> listInt = new List<int>();
+            List<char> listchar = new List<char>();
+            foreach (var item in chars)
+            {
+                if (Char.IsLetter(item))
+                {
+                    listchar.Add(item);
+                }
+                else if (Char.IsDigit(item))
+                {
+                    listInt.Add((int)Char.GetNumericValue(item));
+                }
+            }
+            listchar.Sort();
+            string answerString =new string(listchar.ToArray()) ;
+            int answerInt = listInt.Sum();
+            Console.WriteLine(answerString +answerInt.ToString());
+            Console.WriteLine(answerInt);
+
+        }
+
+        public static int solution(int n, int[] lost, int[] reserve)
+        {
+            int answer = 0;
+
+            answer = n - lost.Length;
+            List<int> reservelist = new List<int>(reserve);
+            List<int> lostList = new List<int>(lost);
+            reservelist.Sort();
+            lostList.Sort();
+
+            foreach (var item in lostList)
+            {
+                if (reservelist.Contains(item))
+                {
+                    answer++;
+                    reservelist.Remove(item);
+                }
+            }
+
+            foreach (var item in lostList)
+            {
+                
+                if (reservelist.Contains(item + 1))
+                {
+                    answer++;
+                    reservelist.Remove(item+1);
+                }
+                else if (reservelist.Contains(item -1) && item!=1)
+                {
+                    answer++;
+                    reservelist.Remove(item - 1);
+                }
+            }
+            Console.WriteLine(answer);
+            return answer;
         }
 
     }

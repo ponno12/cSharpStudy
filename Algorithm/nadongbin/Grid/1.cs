@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Algorithm.nadongbin.Grid
 {
-    public class Grid
+    partial class Grid
     {
         public static void Grid_1()
         {
