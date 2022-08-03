@@ -8,190 +8,147 @@ namespace Exercise
 {
     public class Solution
     {
+        //조이스틱으로 알파벳 이름을 완성하세요. 맨 처음엔 A로만 이루어져 있습니다.
+        /// <summary>
+        /// ▲ - 다음 알파벳
+        /// ▼ - 이전 알파벳(A에서 아래쪽으로 이동하면 Z로)
+        /// ◀ - 커서를 왼쪽으로 이동(첫 번째 위치에서 왼쪽으로 이동하면 마지막 문자에 커서)
+        /// ▶ - 커서를 오른쪽으로 이동(마지막 위치에서 오른쪽으로 이동하면 첫 번째 문자에 커서)
+        /// - 첫 번째 위치에서 조이스틱을 위로 9번 조작하여 J를 완성합니다.
+        /// - 조이스틱을 왼쪽으로 1번 조작하여 커서를 마지막 문자 위치로 이동시킵니다.
+        /// - 마지막 위치에서 조이스틱을 아래로 1번 조작하여 Z를 완성합니다.
+        /// 따라서 11번 이동시켜 "JAZ"를 만들 수 있고, 이때가 최소 이동입니다.
+        /// </summary>
         public static void Main()
         {
             //Implement_4();
 
-            int n = 5;
-            int[] lost = new int[] { 2, 4 };
-            int[] reserve = new int[] { 1, 3, 5 };
-            solution(n, lost, reserve);
+            string name = "JAN";
+            //int answer = solution(name);
+            int answer = Correctsolution(name);
+            Console.WriteLine(answer);
 
         }
-
-        public enum Movement
-        {
-            L = 0,
-            R = 1,
-            U = 2,
-            D = 3
-        }
-        public static void Implement_1()
-        {
-            int a = Convert.ToInt32(Console.ReadLine());
-
-            int[,] map = new int[a, a];
-            int x, y;
-            x = y = 1;
-            int[] dx = new int[] { 0, 0, -1, 1 };
-            int[] dy = new int[] { -1, 1, 0, 0 };
-
-            char[] plane = new char[] { 'R', 'R', 'R', 'U', 'D', 'D' };
-            foreach (char item in plane)
-            {
-                int nx, ny;
-                nx = ny = 0;
-                Console.WriteLine($"{x} and {y}");
-                switch (item)
-                {
-                    case 'L':
-                        nx = x + dx[(int)Movement.L];
-                        ny = y + dy[(int)Movement.L];
-                        break;
-                    case 'R':
-                        nx = x + dx[(int)Movement.R];
-                        ny = y + dy[(int)Movement.R];
-                        break;
-                    case 'U':
-                        nx = x + dx[(int)Movement.U];
-                        ny = y + dy[(int)Movement.U];
-                        break;
-                    case 'D':
-                        nx = x + dx[(int)Movement.D];
-                        ny = y + dy[(int)Movement.D];
-                        break;
-                    default:
-                        break;
-                }
-                if (nx < 1 || ny < 1 || nx > a || ny > a)
-                    continue;
-                x = nx;
-                y = ny;
-            }
-            Console.WriteLine($"{x} and {y}");
-
-
-        }
-        public static void Implement_2()
-        {
-            int a = Convert.ToInt32(Console.ReadLine());
-
-            int minuteCount = 0;
-
-            for (int i = 0; i <= a; i++)
-            {
-                for (int j = 0; j < 60; j++)
-                {
-                    for (int k = 0; k < 60; k++)
-                    {
-                        string temp = i.ToString() + j.ToString() + k.ToString();
-                        if (temp.Contains('3'))
-                        {
-                            Console.WriteLine(temp);
-                            minuteCount++;
-                        }
-                    }
-                    
-                }
-            }
-            
-            Console.WriteLine(minuteCount);
-        }
-        public enum Alphabet
-        {
-            a,b,c,d,e,f,g,h
-        }
-        public static void Implement_3()
-        {
-         
-            int[,] a = new int[7, 7];
-            string a1 = Console.ReadLine();
-            char[] a2 = a1.ToCharArray();
-            //Enum을 사용하여 값 매칭
-            int y = (int)Enum.Parse(typeof(Alphabet), a1);
-            int x = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine(y);
-
-            int count =0;
-
-
-            int[] dx = { -2, -2, -1, 1, 2, 2, -1, 1 };
-            int[] dy = { -1, 1, 2, 2, 1, -1, -2, -2 };
-            for (int i = 0; i < 8; i++)
-            {
-                int n_x = x + dx[i];
-                int n_y = y + dy[i];
-
-                if (n_x >= 0 && n_y >= 0 && n_x <= 7 && n_y <= 7)
-                    count++;
-            }
-            Console.WriteLine(count);
-
-
-        }
-
-        public static void Implement_4()
-        {
-            string a = Console.ReadLine();
-            char[] chars = a.ToCharArray();
-            
-            List<int> listInt = new List<int>();
-            List<char> listchar = new List<char>();
-            foreach (var item in chars)
-            {
-                if (Char.IsLetter(item))
-                {
-                    listchar.Add(item);
-                }
-                else if (Char.IsDigit(item))
-                {
-                    listInt.Add((int)Char.GetNumericValue(item));
-                }
-            }
-            listchar.Sort();
-            string answerString =new string(listchar.ToArray()) ;
-            int answerInt = listInt.Sum();
-            Console.WriteLine(answerString +answerInt.ToString());
-            Console.WriteLine(answerInt);
-
-        }
-
-        public static int solution(int n, int[] lost, int[] reserve)
+        public static int solution(string name)
         {
             int answer = 0;
+            char A = 'A';
+            int hcount = name.Length - 1;
+            char[] chars = name.ToCharArray();
+            if (chars.Last() != 'A')
+                hcount = chars.Length - 1;
 
-            answer = n - lost.Length;
-            List<int> reservelist = new List<int>(reserve);
-            List<int> lostList = new List<int>(lost);
-            reservelist.Sort();
-            lostList.Sort();
-
-            foreach (var item in lostList)
+            foreach (var item in chars)
             {
-                if (reservelist.Contains(item))
+                if (item != A)
                 {
-                    answer++;
-                    reservelist.Remove(item);
+                    int count = item - A;
+                    if (count < ('Z' - 'A') / 2 + 1)
+                        answer += count;
+                    else
+                    {
+                        answer += 'Z' - (item);
+                    }
                 }
+
+
             }
 
-            foreach (var item in lostList)
-            {
-                
-                if (reservelist.Contains(item + 1))
-                {
-                    answer++;
-                    reservelist.Remove(item+1);
-                }
-                else if (reservelist.Contains(item -1) && item!=1)
-                {
-                    answer++;
-                    reservelist.Remove(item - 1);
-                }
-            }
-            Console.WriteLine(answer);
+
+
             return answer;
         }
+        public int othersolution(string name)
+        {
+            int answer = 0;
+            foreach (var i in name)
+            {
+                answer += i - 'A' >= 'Z' + 1 - i ? 'Z' + 1 - i : i - 'A';
+            }
+            int s = 0, e = 0, max = 0, cnt = 0;
+            for (int j = 0; j < name.Length; j++)
+            {
+                if (name[j] == 'A')
+                {
+                    cnt++;
+                }
+                else if (cnt > max)
+                {
+                    max = cnt;
+                    e = j;
+                    s = j - max - 1;
+                    cnt = 0;
+                }
+            }
+            if (cnt > max)
+            {
+                max = cnt;
+                e = name.Length;
+                s = e - max - 1;
+            }
 
+            if (e == name.Length)
+                return answer + s;
+            else
+            {
+                answer += name.Length;
+                int move = -1 > s * 2 - e ? s * 2 - e : -1;
+                return answer + move;
+            }
+
+        }
+        public static int othersolution2(string name)
+        {
+            int answer = 0;
+            foreach (var i in name)
+            {
+                answer += i - 'A' >= 'Z' + 1 - i ? 'Z' + 1 - i : i - 'A';
+            }
+            // 좌,우의 최소는 문자열 시작부터 끝가지 가는경우이다.
+            int min = name.Length - 1;
+
+            // A가 연속되는 경우에는 뒤로돌아갔을때 최솟값을 구해주어서 비교해준다.
+            for (int i = 0; i < name.Length; i++)
+            {
+                int index = i;
+
+                if (name[index] == 'A')
+                {
+                    while (index < name.Length && name[index] == 'A')
+                    {
+                        index++;
+                    }
+
+                    // 종료시점의 index는 연속된 A가 끝나는지점이다.
+
+                    // ((i-1)*2)은  A가 가기전까지 갔다가, 다시 Back하는 수를 세준것이다.
+                    // 연속된 A가 끝나는 index까지 뒤에서 세야함으로 ( 전체길이 - index )를 해준다.
+                    int moveCnt = ((i - 1) * 2) + name.Length - index;
+                    min = Math.Min(min, moveCnt);
+                }
+
+            }
+            return answer + min;
+        }
+        public static int Correctsolution(string name)
+        {
+            int answer = 0;
+            int n = name.Length;
+            int leftOrRight = name.Length - 1;
+            for (int i = 0; i < n; i++)
+            {
+                int next = i + 1;
+                char target = name[i];
+                if (target <= 'N') answer += target - 'A'; //첫 알파벳이 A~N
+                else answer += 'Z' - target + 1; //첫 알파벳이  O~Z
+
+                // 이부분이 이해가 가지 않네 ,  n -next는 오른쪽에서 가니까인건가
+                while (next < n && name[next] == 'A') next++;
+                leftOrRight = Math.Min(leftOrRight, i + (n - next) + Math.Min(i, n - next));
+            }
+            answer += leftOrRight;
+            return answer;
+
+        }
     }
 }
