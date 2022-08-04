@@ -7,9 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="nadongbin\DFSNBFS\" />
-    <Folder Include="프로그래머스\프로그래머스08.03\" />
-  </ItemGroup>
-
 </Project>
