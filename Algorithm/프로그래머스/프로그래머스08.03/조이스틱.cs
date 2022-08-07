@@ -8,7 +8,7 @@ namespace Algorithm.프로그래머스.프로그래머스08._03
 {
     internal class 조이스틱
     {
-        public class Solution
+        public class SolutionExample
         {
             //조이스틱으로 알파벳 이름을 완성하세요. 맨 처음엔 A로만 이루어져 있습니다.
             /// <summary>
@@ -31,7 +31,7 @@ namespace Algorithm.프로그래머스.프로그래머스08._03
                 Console.WriteLine(answer);
 
             }
-            public static int solution(string name)
+            public static int Solution(string name)
             {
                 int answer = 0;
                 char A = 'A';
