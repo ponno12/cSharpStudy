@@ -14,7 +14,6 @@ namespace Exercise
             int[] numbers = new int[] { 1, 1, 1, 1, 1 };
             int target = 3;
             solution.solution(numbers, target);
-            Console.WriteLine(solution.solution(numbers, target));
         }
         static int Dfs(int[] arr, int target, int idx, int num)
         {
