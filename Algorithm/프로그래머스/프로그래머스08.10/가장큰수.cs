@@ -4,15 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exercise
+namespace Algorithm.프로그래머스.프로그래머스08._10
 {
+    /// <summary>
+    /// 0 또는 양의 정수가 주어졌을 때, 정수를 이어 붙여 만들 수 있는 가장 큰 수를 알아내 주세요.
+    /// </summary>
     /// <summary>
     /// 배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하려 합니다.
     /// </summary>
-    public class Solution
+    partial class Solution
     {
 
-        public static void Main()
+        public static void 가장큰수()
         {
             int[] number = { 3, 30, 34, 5, 9 };
             Solution solution = new Solution();
@@ -47,20 +50,17 @@ namespace Exercise
 
 
 
-        // 이렇게 할수있어야하는데 너무 길게썻다.
-        // 핵심 코드는 같지만 구현줄이 너무 차이나네
+        // sort에서 어떤식으로 정렬하는지는 알수없지만 조건은 명시할수있음
+        // -1시 안바꿈 +1시 바꿈을 람다 조건으로 넣어서 정리한다.
         public string solution2(int[] numbers)
         {
             Array.Sort(numbers, (x, y) =>
             {
                 string XY = x.ToString() + y.ToString();
-                Console.WriteLine($"XY :: { XY}");
                 string YX = y.ToString() + x.ToString();
-                Console.WriteLine($"YX :: {YX}");
-                Console.WriteLine($"YX XY Compare :: {YX.CompareTo(XY)}");
-
                 return YX.CompareTo(XY);
             });
+
             if (numbers.Where(x => x == 0).Count() == numbers.Length) return "0";
             else return string.Join("", numbers);
         }
