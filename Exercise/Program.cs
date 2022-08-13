@@ -14,55 +14,37 @@ namespace Exercise
 
         public static void Main()
         {
-            int[] number = { 3, 30, 34, 5, 9 };
+            int[] number = { 3, 0, 6, 1, 5 };
             Solution solution = new Solution();
             var a = solution.solution2(number);
-            foreach (var item in a)
-            {
-                Console.WriteLine(item);
-            }
+            Console.WriteLine(a);
         }
 
-        public string solution(int[] number)
+        public int solution(int[] citations)
         {
-            string answer = "";
-            List<int> list = new List<int>(number);
-            List<int> list2 = new List<int>();
-            foreach (var item in list)
-            {
-                if (item >= 10)
-                {
-                    var temp = item;
-                    while (temp < 10)
-                    {
-                        list2.Add(temp / 10);
-                        temp /= 10;
-                    }
-                }
-            }
+            int answer = 0;
+            List<int> list = new List<int>(citations);
+            int maxcount = 0;
+            list.Sort();
+            answer = list[list.Count / 2];
+            
 
             return answer;
         }
 
-
-
-
-        // 이렇게 할수있어야하는데 너무 길게썻다.
-        // 핵심 코드는 같지만 구현줄이 너무 차이나네
-        public string solution2(int[] numbers)
+        public int solution2(int[] citations)
         {
-            Array.Sort(numbers, (x, y) =>
-            {
-                string XY = x.ToString() + y.ToString();
-                Console.WriteLine($"XY :: { XY}");
-                string YX = y.ToString() + x.ToString();
-                Console.WriteLine($"YX :: {YX}");
-                Console.WriteLine($"YX XY Compare :: {YX.CompareTo(XY)}");
+            int answer = 0;
+            Array.Sort(citations);
+            Array.Reverse(citations);
 
-                return YX.CompareTo(XY);
-            });
-            if (numbers.Where(x => x == 0).Count() == numbers.Length) return "0";
-            else return string.Join("", numbers);
+            for (int i = 0; i < citations.Length; i++)
+            {
+                if ((i + 1) <= citations[i]) answer++;
+            }
+            return answer;
+
         }
+
     }
 }

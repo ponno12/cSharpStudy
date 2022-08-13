@@ -48,8 +48,6 @@ namespace Algorithm.프로그래머스.프로그래머스08._10
         }
 
 
-
-
         // sort에서 어떤식으로 정렬하는지는 알수없지만 조건은 명시할수있음
         // -1시 안바꿈 +1시 바꿈을 람다 조건으로 넣어서 정리한다.
         public string solution2(int[] numbers)
