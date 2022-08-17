@@ -62,5 +62,52 @@ namespace Algorithm.nadongbin.Binary
                 }
             }
         }
+        public static object MyBinarySearchRecursive(int[] array, int key, int min, int max)
+        {
+            if (min > max)
+                return 1000;
+            else
+            {
+                int mid = (min + max) / 2;
+                if (array[mid] == key)
+                {
+                    return ++mid;
+                }
+                else if (key < array[mid])
+                {
+                    return MyBinarySearchRecursive(array, key, min, mid - 1);
+                }
+                else
+                {
+                    return MyBinarySearchRecursive(array, key, mid + 1, max);
+                }
+            }
+
+        }
+
+        public static object MyBinarySearchIterative(int[] inputArray, int key)
+        {
+            int min = 0;
+            int max = inputArray.Length - 1;
+            while (min <= max)
+            {
+                var mid = (min + max) / 2;
+                var val = inputArray[mid];
+                if (val == key)
+                {
+                    return ++mid;
+                }
+                else if (key < val)
+                {
+                    max = mid - 1;
+                }
+                else
+                {
+                    min = mid + 1;
+                }
+            }
+            return "null";
+        }
+
     }
 }

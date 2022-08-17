@@ -14,82 +14,46 @@ namespace Exercise
 
         public static void Main()
         {
-            int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            int answer = (int)MyBinarySearch(array, 9, 0,9);
-            Console.WriteLine(answer);
+            int[] array = { 20, 15, 10, 17 };
+            Console.WriteLine(DDuck(array,4,6));
+        }
+        public static int DDuck(int[] array, int count, int length)
+        {
+            // array를 정렬하기 위해 리스트 형태로
+            List<int> ints = array.ToList();
+            int total; // 잘린 떡의 길이를 구하기 위한 토탈값
+            ints.Sort(); // 떡 
+            // 떡을 자를 칼의 범위 지정
+            int arraymin = 0;
+            int arraymax = ints.Last();
+            int mid;
+            int result = 0;
+            ints.Sort();
+            while (arraymin<=arraymax)
+            { 
+                total = 0;
+                mid = (arraymin + arraymax) / 2;
+                foreach (var item in array)
+                {   
+                    if(item > mid)
+                        total += item - mid;
+                }
+                if(total < length)
+                {
+                    arraymax = mid-1;
+                }
+                else
+                {
+                    result = mid;
+                    arraymin = mid+1;
+                }
+
+            }
+            return result;
         }
 
         
-            //반복문으로 하는버전
-        public static object BinarySearchIterative(int[] inputArray, int key)
-        {
-            int min = 0;
-            int max = inputArray.Length - 1;
-            while (min <= max)
-            {
-                int mid = (min + max) / 2;
-                if (key == inputArray[mid])
-                {
-                    return ++mid;
-                }
-                else if (key < inputArray[mid])
-                {
-                    max = mid - 1;
-                }
-                else
-                {
-                    min = mid + 1;
-                }
-            }
-            return "Nil";
-        }
-        // 재귀함수로 하는버전
-        public static object BinarySearchRecursive(int[] inputArray, int key, int min, int max)
-        {
-            if (min > max)
-            {
-                return "Nil";
-            }
-            else
-            {
-                int mid = (min + max) / 2;
-                if (key == inputArray[mid])
-                {
-                    return ++mid;
-                }
-                else if (key < inputArray[mid])
-                {
-                    return BinarySearchRecursive(inputArray, key, min, mid - 1);
-                }
-                else
-                {
-                    return BinarySearchRecursive(inputArray, key, mid + 1, max);
-                }
-            }
-        }
+       
         
-        public static object MyBinarySearch(int[] array, int key, int min, int max)
-        {
-            if (min > max)
-                return 1000;
-            else
-            {
-                int mid = (min + max) / 2;
-                if (array[mid] == key)
-                {
-                    return ++mid;
-                }
-                else if (key < array[mid])
-                {
-                    return MyBinarySearch(array, key, min, mid - 1);
-                }
-                else
-                {
-                    return MyBinarySearch(array, key, mid + 1, max);
-                }
-            }
-            
-        }
-
     }
 }
