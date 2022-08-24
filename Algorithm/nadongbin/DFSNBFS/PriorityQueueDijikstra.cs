@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Algorithm.nadongbin.DFSNBFS
 {
-    class DijikstraGraph
+    class DijikstraGraph2
     {
         // -1 은 연결 안된 상태를 표시
         int[,] adj = new int[6, 6]
@@ -25,9 +25,9 @@ namespace Algorithm.nadongbin.DFSNBFS
             int[] distance = new int[6];
             Array.Fill(distance, Int32.MaxValue);
             int[] parent = new int[6];
-
+            PriorityQueue<int,int> priorityQueue = new PriorityQueue<int,int>();
             distance[start] = 0;
-            parent[start] = start;
+
 
             while (true)
             {
@@ -38,8 +38,7 @@ namespace Algorithm.nadongbin.DFSNBFS
                 int now = -1;
 
                 // 방문하지 않은 정점중에 제일 짧은 정점을 반환
-                // 우선순위 큐를쓰면 이부분을 간소화 가능
-                for (int i = 0; i < 6; i++)
+                /*for (int i = 0; i < 6; i++)
                 {
                     // 이미 방문한 정점은 스킵
                     if (visited[i])
@@ -51,7 +50,7 @@ namespace Algorithm.nadongbin.DFSNBFS
                     // 지금 시점까지 발견한 가장 좋은 후보
                     closet = distance[i];
                     now = i;
-                }
+                }*/
 
                 if (now == -1)  // 다음 후보가 하나도 없으므로 종료
                     break;

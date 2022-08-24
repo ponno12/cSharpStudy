@@ -46,6 +46,29 @@ namespace Algorithm.nadongbin.DFSNBFS
                 }
             }
         }
+        public void BFSP(int start)
+        {
+            bool[] visited = new bool[6];
+
+            Queue<int> queue = new Queue<int>();
+            queue.Enqueue(start);
+            visited[start] = true;
+
+            while(queue.Count > 0)
+            {
+                int now = queue.Dequeue();
+                for (int i = 0; i < 6; i++)
+                {
+                    if (adj[now, i] == 0)
+                        continue;
+                    if (visited[i])
+                        continue;
+                    queue.Enqueue(i);
+                    visited[i] = true;
+                }
+            }
+        }
+
     }
 
     class Program
