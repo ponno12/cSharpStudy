@@ -24,10 +24,11 @@ namespace Algorithm.nadongbin.DFSNBFS
             bool[] visited = new bool[6];
             int[] distance = new int[6];
             Array.Fill(distance, Int32.MaxValue);
-            int[] parent = new int[6];
+            // parent의 경우 필수는 아님
+            // int[] parent = new int[6];
 
             distance[start] = 0;
-            parent[start] = start;
+            // parent[start] = start;
 
             while (true)
             {
@@ -76,10 +77,55 @@ namespace Algorithm.nadongbin.DFSNBFS
                     if (nextDist < distance[next])
                     {
                         distance[next] = nextDist;
-                        parent[next] = now;
+                        //parent[next] = now;
                     }
                 }
             }
+        }
+    }
+    partial class Solution
+    {
+        public int solution(int N, int[,] road, int K)
+        {
+            // 제일먼저 해야할것으로 비용그래프를 만들고, 시작점 외에는 최고값 대입
+            int[] nCosts = new int[N];
+            /*for (int i = 0; i < N; i++)
+            {
+                if (i == 0) nCosts[0] = 0;
+                else nCosts[i] = int.MaxValue;
+            }*/
+            Array.Fill(nCosts, Int32.MaxValue);
+            nCosts[0] = 0;
+            Queue<int> que = new Queue<int>();
+            que.Enqueue(1); // 시작위치 집어넣기
+            while (que.Count() > 0)
+            {
+                int nCurrent = que.Dequeue();
+                // 출발지가 i인 곳에 연결된 마을의 Cost를 설정
+                for (int i = 0; i < road.GetLength(0); i++)
+                {
+                    int nStart = road[i, 0];
+                    int nEnd = road[i, 1];
+                    int nCost = road[i, 2];
+                    if (nStart == nCurrent)
+                    {
+                        if (nCosts[nEnd - 1] > nCost + nCosts[nStart - 1])
+                        {
+                            nCosts[nEnd - 1] = nCost + nCosts[nStart - 1];
+                            que.Enqueue(nEnd);
+                        }
+                    }
+                    else if (nEnd == nCurrent)
+                    {
+                        if (nCosts[nStart - 1] > nCost + nCosts[nEnd - 1])
+                        {
+                            nCosts[nStart - 1] = nCost + nCosts[nEnd - 1];
+                            que.Enqueue(nStart);
+                        }
+                    }
+                }
+            }
+            return nCosts.Where(x => x <= K).Count();
         }
     }
 }

@@ -14,9 +14,9 @@ namespace Exercise
 
         public static void Main()
         {
-            
-            DijikstraGraph dijikstraGraph = new DijikstraGraph();
-            dijikstraGraph.Dijikstra(0);
+            int[,] sizes = new int[,] { { 60, 50 }, { 30, 70 }, { 60, 30 }, { 80, 40 } };
+            Console.WriteLine(minSquare(sizes));
+           
         }
         public static int DDuck(int[] array, int count, int length)
         {
@@ -155,6 +155,30 @@ namespace Exercise
                 return -1;
             else
                 return d[m];
+        }
+
+        public static int minSquare(int[,] sizes)
+        {
+            // 제일 큰 수를 구하는게 1
+            // 탐색을 해서 큰수가 앞 작은수가 뒤로가게 만듬
+            // 큰수에서 가장 큰값 * 작은거에서 가장 큰값
+            int vertical= 0;
+            int horizontal = 0;
+            
+            for (int i = 0; i < sizes.GetLength(0); i++)
+            {
+                if(sizes[i,0] < sizes[i, 1])
+                {
+                    int temp;
+                    temp = sizes[i, 0];
+                    sizes[i,0] = sizes[i,1];
+                    sizes[i,1] = temp;
+                }
+                vertical = Math.Max(vertical, sizes[i,0]);
+                horizontal = Math.Max(horizontal, sizes[i, 1]);
+            }
+
+            return vertical * horizontal; ;
         }
     }
     public class DijikstraGraph
